@@ -11,7 +11,7 @@
     <appender name="C" class="ch.qos.logback.core.ConsoleAppender">
         <Target>System.out</Target>
         <encoder>
-            <pattern>[series][%p] [%d{yyyy-MM-dd HH:mm:ss}] %C | %m%n</pattern>
+            <pattern>[gse][%p] [%d{yyyy-MM-dd HH:mm:ss}] %C | %m%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>DEBUG</level>
@@ -19,9 +19,9 @@
     </appender>
     <appender name="D" class="ch.qos.logback.core.FileAppender">
         <Append>true</Append>
-        <File>../data/log/series_log.log</File>
+        <File>../data/log/gse_log.log</File>
         <encoder>
-            <pattern>[series][%p] [%d{yyyy-MM-dd HH:mm:ss}] %C | %m%n</pattern>
+            <pattern>[gse][%p] [%d{yyyy-MM-dd HH:mm:ss}] %C | %m%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>DEBUG</level>
@@ -29,9 +29,9 @@
     </appender>
     <appender name="E" class="ch.qos.logback.core.FileAppender">
         <Append>true</Append>
-        <File>../data/log/series_error.log</File>
+        <File>../data/log/gse_error.log</File>
         <encoder>
-            <pattern>[series][%p] [%d{yyyy-MM-dd HH:mm:ss}] %C | %m%n</pattern>
+            <pattern>[gse][%p] [%d{yyyy-MM-dd HH:mm:ss}] %C | %m%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
