@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * -q *:*
  * -w "(contents:beam OR contents:lucene) AND (title:beam)"
  * -o "id asc"
- * 注意：参数值如果是含有空格的，必须用引号引起来。
+ * 注意：参数值如果是含有空格的，必须用引号引起来。-r必须是MainApp后面的第一个参数。
  *
  * 更新命令：
  * Java -cp gse-1.0-SNAPSHOT-jar-with-dependencies.jar cn.edu.cug.cs.gtl.se.app.cmd.MainApp
@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * -d /User/zhenwenhe/git/data
  * -m fileMapper
  * -f officesFilter
- * 注意：参数值如果是含有空格的，必须用引号引起来。
+ * 注意：参数值如果是含有空格的，必须用引号引起来。-r必须是MainApp后面的第一个参数。
  */
 public class MainApp {
     public static final Logger LOGGER = LoggerFactory.getLogger(MainApp.class); //slf4j
