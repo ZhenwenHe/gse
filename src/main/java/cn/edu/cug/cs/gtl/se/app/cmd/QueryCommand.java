@@ -39,29 +39,28 @@ public class QueryCommand implements AppCommand{
             args=arg;
         };
         getLogger().debug("query",args);
-        QueryCommand cmd=this;
-        cmd.parseLine(addOptions(),args);
+        parseLine(addOptions(),args);
         try {
             SolrClient solrClient = new HttpSolrClient
                     .Builder()
-                    .withBaseSolrUrl(cmd.serverURL)
+                    .withBaseSolrUrl(serverURL)
                     .withConnectionTimeout(10000)
                     .withSocketTimeout(60000)
                     .build();
 
             final Map<String, String> queryParamMap = new HashMap<>();
-            queryParamMap.put("q", cmd.q);
-            queryParamMap.put("fq", cmd.fq);
+            queryParamMap.put("q", q);
+            queryParamMap.put("fq",fq);
 
-            queryParamMap.put("fl", cmd.fl);
-            queryParamMap.put("sort", cmd.sort);
+            queryParamMap.put("fl", fl);
+            queryParamMap.put("sort", sort);
             MapSolrParams queryParams = new MapSolrParams(queryParamMap);
 
-            final QueryResponse response = solrClient.query(cmd.collection, queryParams);
+            final QueryResponse response = solrClient.query(collection, queryParams);
             final SolrDocumentList documents = response.getResults();
             getLogger().debug("Found " + documents.getNumFound() + " documents");
             for(SolrDocument document : documents) {
-                for(String s : cmd.fieldList){
+                for(String s : fieldList){
                     final String tmp = (String) document.getFirstValue(s);
                     getLogger().debug(s + ": " + tmp);
                 }

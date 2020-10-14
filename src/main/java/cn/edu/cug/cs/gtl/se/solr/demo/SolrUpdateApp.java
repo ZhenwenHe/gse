@@ -22,7 +22,7 @@ public class SolrUpdateApp {
 
     public static void main(String [] args){
 
-        String serverURL = "http://120.24.168.173:8983/solr";
+        String serverURL = "http://202.114.194.3:8983/solr";
         SolrClient solrClient = new HttpSolrClient
                 .Builder()
                 .withBaseSolrUrl(serverURL)
@@ -74,9 +74,9 @@ public class SolrUpdateApp {
                     .execute();
 
             for(SolrInputDocument s: docs){
-                final UpdateResponse updateResponse = solrClient.add("gtl", s);
+                final UpdateResponse updateResponse = solrClient.add("solr", s);
                 // Indexed documents must be committed
-                solrClient.commit("gtl");
+                solrClient.commit("solr");
                 System.out.println(updateResponse.jsonStr());
             }
 

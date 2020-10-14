@@ -25,7 +25,7 @@ public class UpdateCommand implements AppCommand{
     FileFilter fileFilter=FileFilter.officesFileFilter();
 
     public  void run(String [] args){
-        if(args.length<=4){
+        if(args.length<=0){
             String[] arg ={
                     "-h", //help information
                     "-s","http://120.24.168.173:8983/solr",
@@ -48,12 +48,12 @@ public class UpdateCommand implements AppCommand{
 
         try {
             List<SolrInputDocument> docs = DocumentCreator
-                    .of(cmd.dataDirectory, cmd.fileFilter, DocumentMapperWrapper.paragraphMapper())
+                    .of(cmd.dataDirectory, cmd.fileFilter, cmd.docMapper)
                     .execute();
             for(SolrInputDocument s: docs){
-                final UpdateResponse updateResponse = solrClient.add("gtl", s);
+                final UpdateResponse updateResponse = solrClient.add(collection, s);
                 // Indexed documents must be committed
-                solrClient.commit("gtl");
+                solrClient.commit(collection);
                 getLogger().debug(updateResponse.jsonStr());
             }
         }

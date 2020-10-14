@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 查询命令：
- * Java -cp gse-1.0-SNAPSHOT-jar-with-dependencies.jar cn.edu.cug.cs.gtl.se.app.cmd.MainApp
+ * java -cp gse-1.0-SNAPSHOT-jar-with-dependencies.jar cn.edu.cug.cs.gtl.se.app.cmd.MainApp
  * -r query
  * -s http://120.24.168.173:8983/solr
  * -c gtl
@@ -17,11 +17,11 @@ import org.slf4j.LoggerFactory;
  * 注意：参数值如果是含有空格的，必须用引号引起来。-r必须是MainApp后面的第一个参数。
  *
  * 更新命令：
- * Java -cp gse-1.0-SNAPSHOT-jar-with-dependencies.jar cn.edu.cug.cs.gtl.se.app.cmd.MainApp
+ * java -cp gse-1.0-SNAPSHOT-jar-with-dependencies.jar cn.edu.cug.cs.gtl.se.app.cmd.MainApp
  * -r update
  * -s http://120.24.168.173:8983/solr
  * -c gtl
- * -d /User/zhenwenhe/git/data
+ * -d /Users/zhenwenhe/git/data
  * -m fileMapper
  * -f officesFilter
  * 注意：参数值如果是含有空格的，必须用引号引起来。-r必须是MainApp后面的第一个参数。
@@ -33,13 +33,12 @@ public class MainApp {
     public static void main(String[] args) {
         if(args.length<=0){
             String[] arg ={
-                    "-r","query", // query, update, or insert command,必须是首个参数
-                    "-s","http://120.24.168.173:8983/solr",
-                    "-c","gtl",
-                    "-l","id,title,contents",//本地目录，里面存放的是需要入库的文件，可以是WORD、PDF等
-                    "-q", "*:*",
-                    "-w", "\"(contents:beam OR contents:lucene) AND (title:beam)\"",
-                    "-o", "\'id asc\'",
+                    "-r","update", // query, update, or insert command,必须是首个参数
+                    "-s","http://202.114.194.3:8983/solr",
+                    "-c","solr",
+                    "-d", "/Users/zhenwenhe/tmp",
+                    "-m", "paragraphMapper",
+                    "-f", "officesFilter",
                     "-h" //help information
             };
             args=arg;
