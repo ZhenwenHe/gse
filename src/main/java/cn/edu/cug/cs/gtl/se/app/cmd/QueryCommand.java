@@ -26,7 +26,7 @@ public class QueryCommand implements AppCommand{
     List<String> fieldList = null;
 
     public  void run(String[] args){
-        if(args.length<=4){
+        if(args.length<=0){
             String[] arg ={
                     "-h", //help information
                     "-s","http://120.24.168.173:8983/solr",
@@ -134,7 +134,7 @@ public class QueryCommand implements AppCommand{
 
         }
         catch (ParseException e) {
-            hf.printHelp("UpdateCommand", options, true);
+            hf.printHelp("QueryCommand", options, true);
         }
 
     }

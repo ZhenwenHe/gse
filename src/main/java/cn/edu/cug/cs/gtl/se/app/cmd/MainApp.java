@@ -32,15 +32,27 @@ public class MainApp {
 
     public static void main(String[] args) {
         if(args.length<=0){
-            String[] arg ={
-                    "-r","update", // query, update, or insert command,必须是首个参数
-                    "-s","http://202.114.194.3:8983/solr",
-                    "-c","solr",
-                    "-d", "/Users/zhenwenhe/tmp",
-                    "-m", "paragraphMapper",
-                    "-f", "officesFilter",
-                    "-h" //help information
-            };
+//            String[] arg =
+//                    {
+//                    "-r","update", // query, update, or insert command,必须是首个参数
+//                    "-s","http://202.114.194.3:8983/solr",
+//                    "-c","solr",
+//                    "-d", "/Users/zhenwenhe/tmp",
+//                    "-m", "paragraphMapper",
+//                    "-f", "officesFilter",
+//                    "-h" //help information
+//            };
+            String[] arg =
+                    {
+                            "-r","query", // query, update, or insert command,必须是首个参数
+                            "-s","http://202.114.194.3:8983/solr",
+                            "-c","solr",
+                            "-l",  "id,title,contents",
+                            "-q", "*:*",
+                            "-w", "(contents:beam OR contents:lucene) AND (title:beam)",
+                            "-o",  "id asc",
+                            "-h" //help information
+                    };
             args=arg;
         };
         int i = 0;
